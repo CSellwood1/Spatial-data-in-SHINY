@@ -35,6 +35,12 @@ my_mapL <- leaflet() %>%
   addMarkers(lng=-0.1278, lat=51.5074, popup="World's most important city!") %>%
   addCircleMarkers(lng=-0.1278, lat=51.5074,
                    popup="London population 8 mil",
-                   labelOptions = labelOptions(textsize = "15px"))
-                   
+                   label = labelOptions(textsize = "15px"))
 my_mapL
+
+##
+library(sf)
+#read in shape files
+nafferton_fields<- st_read("C:\\Users\\nick\\Documents\\Newcastle\\Fourth Year\\BIO8068 Management and Visualisation of Data\\Spatial-data-in-SHINY\\www\\naff_fields\\naff_fields.shp")
+#retrieve coord reference system from the object
+st_crs(nafferton_fields)
