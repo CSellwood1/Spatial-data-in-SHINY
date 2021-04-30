@@ -17,4 +17,10 @@ leaflet() %>%
   addProviderTiles(providers$Stamen.TonerLabels) %>% 
   addMarkers(lng=-1.6178, lat=54.9783, popup="World's most important city!")
 
+#changing marker symbols
+leaflet() %>%
+  addTiles() %>%  
+  addCircleMarkers(lng=-1.6178, lat=54.9783,
+                   popup="The world's most important city!", radius = 5, color = "red") #makes a circular, red marker
+
   
