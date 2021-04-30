@@ -23,4 +23,8 @@ leaflet() %>%
   addCircleMarkers(lng=-1.6178, lat=54.9783,
                    popup="The world's most important city!", radius = 5, color = "red") #makes a circular, red marker
 
-  
+#make a london map
+my_mapL <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=-0.1278, lat=51.5074, popup="World's most important city!")
+my_mapL
