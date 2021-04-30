@@ -44,3 +44,13 @@ library(sf)
 nafferton_fields<- st_read("C:\\Users\\nick\\Documents\\Newcastle\\Fourth Year\\BIO8068 Management and Visualisation of Data\\Spatial-data-in-SHINY\\www\\naff_fields\\naff_fields.shp")
 #retrieve coord reference system from the object
 st_crs(nafferton_fields)
+#this shows the EPSG code as 6277, want it as the more usual 27700
+#transform to correct EPSG
+nafferton_fields <- nafferton_fields %>% 
+  st_set_crs(27700) %>% 
+  st_transform(27700)
+#transform to lat/long
+nafferton_fields_ll <- st_transform(nafferton_fields, 4326)
+#plot the data
+plot(nafferton_fields_ll)
+
