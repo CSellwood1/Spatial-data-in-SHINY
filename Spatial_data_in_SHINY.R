@@ -28,3 +28,13 @@ my_mapL <- leaflet() %>%
   addTiles() %>%  # Add default OpenStreetMap map tiles
   addMarkers(lng=-0.1278, lat=51.5074, popup="World's most important city!")
 my_mapL
+
+#add a circle marker with a label
+my_mapL <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=-0.1278, lat=51.5074, popup="World's most important city!") %>%
+  addCircleMarkers(lng=-0.1278, lat=51.5074,
+                   popup="London population 8 mil",
+                   labelOptions = labelOptions(textsize = "15px"))
+                   
+my_mapL
