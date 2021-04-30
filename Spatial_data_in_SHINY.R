@@ -34,8 +34,7 @@ my_mapL <- leaflet() %>%
   addTiles() %>%  # Add default OpenStreetMap map tiles
   addMarkers(lng=-0.1278, lat=51.5074, popup="World's most important city!") %>%
   addCircleMarkers(lng=-0.1278, lat=51.5074,
-                   popup="London population 8 mil",
-                   label = labelOptions(textsize = "15px"))
+                   label ="London population 8 mil",labelOptions(textsize = "15px"))
 my_mapL
 
 ##
@@ -53,4 +52,16 @@ nafferton_fields <- nafferton_fields %>%
 nafferton_fields_ll <- st_transform(nafferton_fields, 4326)
 #plot the data
 plot(nafferton_fields_ll)
+
+##
+
+#try displaying the new lat/long nafferton map in leaflet
+leaflet() %>% 
+  addProviderTiles(providers$Esri.WorldImagery) %>%
+  addFeatures(nafferton_fields_ll)
+#display the vector data subsets
+#try just organic
+leaflet() %>% 
+  addProviderTiles(providers$Esri.WorldImagery) %>%
+  addFeatures(nafferton_fields_ll[nafferton_fields_ll$Farm_Meth=="Organic",])%>% addFeatures(nafferton_fields_ll[nafferton_fields_ll$Farm_Meth=="Conventional",])
 
