@@ -65,3 +65,15 @@ leaflet() %>%
   addProviderTiles(providers$Esri.WorldImagery) %>%
   addFeatures(nafferton_fields_ll[nafferton_fields_ll$Farm_Meth=="Organic",])%>% addFeatures(nafferton_fields_ll[nafferton_fields_ll$Farm_Meth=="Conventional",])
 
+#colour fields at farm by area
+
+#set bins to divide up the areas 
+bins <- c(0, 25000, 50000, 75000, 100000, 125000, 150000, 175000, 200000, 225000)
+# Decide on the colour palatte
+pal <- colorBin(palette = "Greens", domain = bins)
+# Create the map
+leaflet() %>% 
+  addProviderTiles(providers$Esri.WorldImagery) %>% 
+  addFeatures(nafferton_fields_ll,
+              fillColor = ~pal(nafferton_fields_ll$Area_m),
+              fillOpacity = 1)
